@@ -62,7 +62,7 @@ function run_islanding_behavioral_sim()
     end
 
     figure('Name', ['Behavioral Islanding Response for ' control_mode ' control']);
-    
+    sgtitle(['Islanding Response for ' control_mode ' control']);
     % Plot Frequency
     subplot(2,1,1);
     plot(t, frequency_hz, 'b', 'LineWidth', 2);

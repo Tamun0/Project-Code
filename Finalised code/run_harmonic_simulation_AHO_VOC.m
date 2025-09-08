@@ -10,7 +10,7 @@ function run_harmonic_simulation_AHO_VOC()
     % --- Simulation Case Selection ---
     % ========================================================================
     % Control Mode: 'Droop', 'VSM', or 'VOC_AHO'
-    control_mode = 'VOC_AHO'; 
+    control_mode = 'VSM'; 
     
     % ========================================================================
     % 1. DEFINE SYSTEM PARAMETERS (Struct 'P')
@@ -86,7 +86,6 @@ function run_harmonic_simulation_AHO_VOC()
     end
     
     figure('Name', [control_mode ' Harmonic Performance']);
-    
     plot(t, vC_a, 'b', 'LineWidth', 1.5);
     hold on;
     line([P.t_harmonic_start P.t_harmonic_start], ylim, 'Color', 'r', 'LineStyle', '--');

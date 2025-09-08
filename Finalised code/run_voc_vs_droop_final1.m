@@ -5,7 +5,7 @@ function run_voc_vs_droop_final1()
     clear; clc; close all;
 
     % --- Simulation Case Selection ---
-    control_mode = 'Droop'; % CHANGE THIS to 'VOC' or 'Droop'
+    control_mode = 'VOC'; % CHANGE THIS to 'VOC' or 'Droop'
 
     % ========================================================================
     % 1. DEFINE SYSTEM PARAMETERS (Struct 'P')
@@ -62,13 +62,14 @@ function run_voc_vs_droop_final1()
     disp('Simulation finished. Plotting results...');
     
     figure('Name', ['Dynamic Response of ' control_mode ' Controller']);
-    
+    sgtitle(['Dynamic Response of ' control_mode ' Controller'])
     subplot(2,1,1);
     plot(t, V_rms, 'b', 'LineWidth', 2);
     hold on;
     line([P.t_step P.t_step], ylim, 'Color', 'r', 'LineStyle', '--', 'LineWidth', 2);
     title('Inverter Terminal Voltage Magnitude');
     xlabel('Time (s)'); ylabel('Voltage (V_{RMS})');
+    legend('Voltage Magnitude','Disturbance');
     grid on;
 
     subplot(2,1,2);
@@ -77,6 +78,7 @@ function run_voc_vs_droop_final1()
     line([P.t_step P.t_step], ylim, 'Color', 'r', 'LineStyle', '--', 'LineWidth', 2);
     title('Inverter Active Power Output');
     xlabel('Time (s)'); ylabel('Power (W)');
+    legend('Power Output','Disturbance');
     grid on;
 end
 

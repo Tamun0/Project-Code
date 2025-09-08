@@ -65,6 +65,7 @@ function run_vsm_smib_detailed_simulation()
     figure('Name', 'VSM Response to Power Step Command');
     
     % Plot Frequency
+    sgtitle('VSM Response to Power Step Command')
     subplot(3,1,1);
     plot(t, frequency_hz, 'b', 'LineWidth', 2);
     hold on;

@@ -1,12 +1,12 @@
 function run_inverter_simulation_v7()
     % Main function to run a final, robust power system simulation.
     % This version uses a slower power ramp and a small virtual inductance
-    % to ensure numerical stability for both strong and weak grid scenarios.
+    % to ensure numerical stability for both Strong and weak grid scenarios.
 
     clear; clc; close all;
 
     % --- Simulation Case Selection ---
-    grid_type = 'strong'; % Can be 'strong' or 'weak'
+    grid_type = 'Strong'; % Can be 'Strong' or 'weak'
 
     % ========================================================================
     % 1. DEFINE SYSTEM PARAMETERS (Struct 'P')
@@ -29,10 +29,10 @@ function run_inverter_simulation_v7()
     % FIX 1: ADD VIRTUAL INDUCTANCE for numerical damping
     P.L_virtual = 10e-3; % A small virtual inductance (1 mH)
     
-    if strcmp(grid_type, 'strong')
+    if strcmp(grid_type, 'Strong')
         P.R_grid = 0.1;
         P.L_grid = 0.1e-3;
-        disp('Running STRONG GRID simulation...');
+        disp('Running Strong GRID simulation...');
     else
         P.R_grid = 2.0;
         P.L_grid = 5.0e-3;
@@ -76,17 +76,17 @@ function run_inverter_simulation_v7()
        i_abc(k,:) = (T_inv_park * [id(k); iq(k)])';
     end
     
-    figure('Name', ['Results for ' grid_type ' Grid']);
-    
+    figure('Name', ['Grid strength test for ' grid_type ' Grid']);
+    sgtitle(['Grid strength test of Droop control for ' grid_type ' Grid']);
     subplot(2,1,1);
     plot(t, v_abc_terminal);
-    title('Three-Phase Terminal Voltage at PCC (V)');
+    title(['Three-Phase Terminal Voltage at PCC for ' grid_type ' Grid (V)']);
     xlabel('Time (s)'); ylabel('Voltage (V)');
     legend('Va', 'Vb', 'Vc'); grid on; ylim([-400 400]);
 
     subplot(2,1,2);
     plot(t, i_abc);
-    title('Three-Phase Inverter Output Current (A)');
+    title(['Three-Phase Inverter Output Current for ' grid_type ' Grid (A)']);
     xlabel('Time (s)'); ylabel('Current (A)');
     legend('Ia', 'Ib', 'Ic'); grid on;
 

@@ -9,7 +9,7 @@ function run_fault_ride_through_simulation_pure_droop()
     % --- Simulation Case Selection ---
     % ========================================================================
     % Control Mode: 'Droop', 'VSM', or 'VOC'
-    control_mode = 'Droop'; 
+    control_mode = 'VOC'; 
     
     % ========================================================================
     % 1. DEFINE SYSTEM PARAMETERS (Struct 'P')
